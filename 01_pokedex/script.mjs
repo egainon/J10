@@ -93,14 +93,31 @@ getEvolutions("Bulbasaur");
  */
 function searchPokemon(name) {
   // TODO : trouver le Pokémon, retourner ses infos principales
-   for(let i= 0; i < pokedex.pokemon.length; i++){// on parcourt le tableau
-}
-}
-// ---------------------------------------------------------------
-// 🔍 Tests rapides (tu peux commenter ou adapter ces lignes)
-// ---------------------------------------------------------------
+  const infos = pokedex.pokemon.find((k) => k.name === name); //méthode find() (const resultat = inventaire.find((fruit) => fruit.nom === "cerises");)
+  //  for(let i= 0; i < pokedex.pokemon.length; i++){// on parcourt le tableau
+   if (infos){ 
 
-// console.log(countPokemon());
-// console.log(heavyPokemon().slice(0, 5));
-// console.log(getEvolutions("Bulbasaur"));
-// console.log(searchPokemon("Pikachu"));
+    let evolutions = "";
+    if (infos.next_evolution && infos.next_evolution.length === 1){
+    evolutions = infos.next_evolution[0].name;
+    }else if (infos.next_evolution && infos.next_evolution.length === 2){
+      evolutions = infos.next_evolution[0].name + " → " +infos.next_evolution[1].name;
+    }else{
+      evolutions = "Pas d'évolutions";
+    }
+
+    return console.log(`Nom : ${infos.name} 
+      Type : ${infos.type} 
+      Taille : ${infos.height} 
+      Poids : ${infos.weight} 
+      Evolutions : ${evolutions} 
+      Faiblesses : ${infos.weaknesses}`); 
+   
+  
+  } else{
+    return console.log("null");
+   }
+  }
+// }
+searchPokemon("Pikachu");
+searchPokemon("Bulbasaur");
