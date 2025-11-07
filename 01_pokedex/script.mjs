@@ -97,12 +97,12 @@ function searchPokemon(name) {
   //  for(let i= 0; i < pokedex.pokemon.length; i++){// on parcourt le tableau
    if (infos){ 
 
-    let evolutions = "";
-    if (infos.next_evolution && infos.next_evolution.length === 1){
-    evolutions = infos.next_evolution[0].name;
-    }else if (infos.next_evolution && infos.next_evolution.length === 2){
-      evolutions = infos.next_evolution[0].name + " → " +infos.next_evolution[1].name;
-    }else{
+    let evolutions = "";// pour afficher les différentes évolutions
+    if (infos.next_evolution && infos.next_evolution.length === 1){// si le pokemon a une seule évolution
+    evolutions = infos.next_evolution[0].name;// nom de l'évolution
+    }else if (infos.next_evolution && infos.next_evolution.length === 2){// si le pokemon a deux évolutions
+      evolutions = `${infos.next_evolution[0].name} → ${infos.next_evolution[1].name}`;
+    }else{// sinon pas d'évolutions
       evolutions = "Pas d'évolutions";
     }
 
