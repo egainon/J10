@@ -77,25 +77,25 @@ sortByWeight();
 function getEvolutions(name) {
   // TODO : chercher le Pokémon, vérifier la clé "next_evolution"
   let pokemonEvolution = [];
-  for(let i= 0; i < pokemon.next_evolution.length; i++){// on parcourt le tableau
-    if (pokedex.pokemon[i].next_evolution === false){
-      return console.log(pokemonEvolution);
-    }
-    else if (pokedex.pokemon[i].next_evolution === true){
-        pokemonEvolution.push(pokemon.next_evolution[i].name);
+  for(let i= 0; i < pokedex.pokemon.length; i++){// on parcourt le tableau
+  if (pokedex.pokemon[i].next_evolution && pokedex.pokemon[i].name === name){//condition pour vérifier si next_evolution existe avec nom
+    for(let j= 0; j <pokedex.pokemon[i].next_evolution.length; j++){// boucle qui parcourt les différentes next_evolution
+        pokemonEvolution.push(pokedex.pokemon[i].next_evolution[j].name);//push nom des différentes évolution (j)
+        }
     }
   }
   return console.log(pokemonEvolution);
 }
-console.log(getEvolutions("Bulbasaur"));
+getEvolutions("Bulbasaur");
 
 /**
  * Retourne un objet complet représentant le Pokémon recherché
  */
 function searchPokemon(name) {
   // TODO : trouver le Pokémon, retourner ses infos principales
+   for(let i= 0; i < pokedex.pokemon.length; i++){// on parcourt le tableau
 }
-
+}
 // ---------------------------------------------------------------
 // 🔍 Tests rapides (tu peux commenter ou adapter ces lignes)
 // ---------------------------------------------------------------
